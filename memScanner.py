@@ -119,7 +119,7 @@ def ReflectiveScan():
             while base_address < max_address:
                 windll.kernel32.VirtualQueryEx(ProcHandle.handle, LPVOID(base_address), ctypes.byref(lpBuffer), ctypes.sizeof(lpBuffer))
                 info = MEMORY_BASIC_INFORMATION(lpBuffer)
-                if (((info.Protect == "EXECUTE_READWRITE") or (info.Protect == "EXECUTE_READ") or (info.Protect == "READWRITE")) and info.State == "MEM_COMMIT"):
+                if (((info.Protect == "EXECUTE_READWRITE") or (info.Protect == "EXECUTE_READ") or (info.Protect == "READWRITE")) and info.State == "MEM_COMMIT" and info.Type == "MEM_MAPPED"):
                     _Buffer = ctypes.create_string_buffer(info.RegionSize)
                     windll.kernel32.ReadProcessMemory(ProcHandle.handle, LPVOID(info.BaseAddress), _Buffer, info.RegionSize,0)                    
                     if (_Buffer[:116] == bytearray(peHeader)):
