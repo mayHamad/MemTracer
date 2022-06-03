@@ -8,7 +8,9 @@ memScanner is script written in python language that aims to detect a DLL loaded
 <br />Then, the suspected page will be dump for further analysis. Also, the script provides ability of search about specific loaded module by name.
 
 # Example
-python3 memScanner.py [-h] [-r] [-m MODULE]
+python.exe memScanner.py [-h] [-r] [-m MODULE]
 <br />      -h, --help                    show this help message and exit
 <br />      -r, --reflectiveScan          Looking for reflective DLL loading
 <br />      -m MODULE, --module MODULE    Looking for spcefic loaded DLL
+
+**The script needs administrator privileges in order incepect all processes.**
